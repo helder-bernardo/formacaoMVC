@@ -1,0 +1,15 @@
+﻿CREATE TABLE [dbo].[Filiacao](
+	[FiliacaoId] [int] IDENTITY(1,1) NOT NULL,
+	[Nome] [varchar](200) NOT NULL,
+	[CidadeId] [int] NOT NULL,
+ CONSTRAINT [PK_Filiacao] PRIMARY KEY CLUSTERED 
+(
+	[FiliacaoId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Filiacao]  WITH CHECK ADD  CONSTRAINT [FK_Filiacao_Cidade] FOREIGN KEY([CidadeId])
+REFERENCES [dbo].[Cidade] ([CidadeId])
+GO
+
+ALTER TABLE [dbo].[Filiacao] CHECK CONSTRAINT [FK_Filiacao_Cidade]
